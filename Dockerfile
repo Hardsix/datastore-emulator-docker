@@ -3,11 +3,9 @@ ARG GCLOUD_SDK_VERSION=293.0.0-alpine
 
 # Use google cloud sdk
 FROM google/cloud-sdk:$GCLOUD_SDK_VERSION
-MAINTAINER Hardsix
 
 # Install Java 8 for Datastore emulator
-RUN apk add --update --no-cache openjdk8-jre &&\
-    gcloud components install cloud-datastore-emulator --quiet
+RUN apk add --update --no-cache openjdk8-jre && gcloud components install cloud-datastore-emulator --quiet -- --quiet
 
 # Volume to persist Datastore data
 VOLUME /opt/data
